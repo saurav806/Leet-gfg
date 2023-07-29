@@ -135,7 +135,6 @@ void find(Node *root, Node* &prev, Node* &curr,int &k, int n){
     if(k<n){
         k++;
         prev=root;
-        // curr=root->right;
     }
     else if(k==n){
         k++;
@@ -153,7 +152,6 @@ float findMedian(struct Node *root)
       Node *curr=nullptr;
       int k=n/2;
       find(root,prev,curr,k,n);
-    //   cout<<prev->data<<" "<<curr->data<<endl;
       if(n%2!=0) return prev->data;
       int sum=curr->data+ prev->data;
       return sum/2.0;
