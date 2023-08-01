@@ -20,19 +20,15 @@ public:
         for(int i=0;i<R;i++){
             maxi=max(maxi,matrix[i][C-1]);
         }
-        // cout<<mini<<" "<<maxi<<endl;
+        
         int medPos= (R*C+1)/2;
-        // ount+=upper_bound(matrix[i].begin(),matrix[i].end(),mid)-matrix[i].begin();
-           
         while(mini<maxi){
             int mid=(mini+maxi)/2;
             int midPos=0;
             for(int i=0;i<R;i++){
                 int index= upper_bound(matrix[i].begin(), matrix[i].end(), mid) - matrix[i].begin();
-                // cout<<mid<<" "<<index<<endl;
                 midPos+=index;
             }
-            // cout<<midPos<<endl;
             if(midPos<medPos)
                 mini=mid+1;
             else
