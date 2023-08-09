@@ -16,7 +16,7 @@ public:
     int minScoreTriangulation(vector<int>& values) {
         int N= values.size();
         vector<vector<int>>dp(N+1, vector<int>(N+1, -1));
-        int ans= mcm(values, 1, N-1,dp);
-        return ans;
+        
+        return mcm(values, 1, N-1,dp);
     }
 };
