@@ -8,32 +8,31 @@ class Solution {
   public:
     vector<int> asteroidCollision(int N, vector<int> &asteroids) {
         // code here
-        stack<int>q;
-        for(auto it: asteroids){
-            if(it>0)
-                q.push(it);
+        stack<int>st;
+        for(auto it:asteroids){
+            if(it>0) st.push(it);
             else{
-                bool flag=false;
-                while(!q.empty() && abs(it)>=q.top() && q.top()>0){
-                    
-                    if(q.top()==abs(it)){
+                bool flag = false;
+                
+                while(!st.empty() && st.top() <= abs(it) && st.top()>0 ){
+                    if(st.top() == abs(it)){
+                        st.pop();
                         flag=true;
-                        q.pop();
                         break;
                     }
-                    q.pop();
+                    st.pop();
                 }
                 if(flag) continue;
-                if(q.empty() || q.top()<0)
-                    q.push(it);
+                if(st.empty() || st.top() < 0)
+                    st.push(it);
             }
         }
         vector<int>ans;
-        while(!q.empty()){
-            ans.push_back(q.top());
-            q.pop();
+        while(!st.empty()){
+            ans.push_back(st.top());
+            st.pop();
         }
-        reverse(ans.begin(), ans.end());
+        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
