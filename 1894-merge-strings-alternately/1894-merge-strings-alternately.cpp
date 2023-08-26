@@ -7,8 +7,12 @@ public:
                 ans+=word1[i];
                 ans+=word2[i++];
         }
-        while(i<word1.size()) ans+=word1[i++];
-        while(i<word2.size()) ans+=word2[i++];
+        if(i<word1.size()) {
+            ans+= word1.substr(i,word1.size());
+        }
+        if(i<word2.size()) {
+            ans+= word2.substr(i,word2.size());
+        }
         return ans;
     }
 };
