@@ -23,12 +23,22 @@ public:
             }
         }
         
+        bool vis[r] ;
+        bool vis2[c] ;
+        fill(vis,vis+r,false);
+        fill(vis2,vis2+c,false);
         while(!posX.empty()){
             int row = posX.front().first;
             int col = posX.front().second;
-            fillRow(row,matrix);
-            fillCol(col,matrix);
             posX.pop();
+            if(!vis[row]){
+                fillRow(row,matrix);
+                vis[row] = true;
+            }
+            if(!vis2[col]){
+                fillCol(col,matrix);
+                // vis[col] = true;
+            }
         }
     }
 };
