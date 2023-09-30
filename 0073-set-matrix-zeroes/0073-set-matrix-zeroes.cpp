@@ -37,7 +37,7 @@ public:
             }
             if(!vis2[col]){
                 fillCol(col,matrix);
-                // vis[col] = true;
+                vis2[col] = true;
             }
         }
     }
