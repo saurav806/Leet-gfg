@@ -1,19 +1,22 @@
 class Solution {
 public:
+
+    int lcs(string &str1, string &str2, int n, int m, vector<vector<int>>&dp){
+        if(n==0 || m==0) return 0;
+        if(dp[n][m] != -1) return dp[n][m];
+        if(str1[n-1] == str2[m-1])
+            return dp[n][m] = 1+ lcs(str1,str2, n-1, m-1, dp);
+        else
+            return dp[n][m] = max(lcs(str1,str2,n-1,m,dp), lcs(str1,str2,n,m-1,dp));
+    }
     int minDistance(string str1, string str2) {
-        int m=str1.size();
-	    int n=str2.size();
-	    int dp[m+1][n+1];
-	    for(int i=0;i<=m;i++) dp[i][0] = 0;
-	    for(int i=0;i<=n;i++) dp[0][i] = 0;
-	    for(int i=1;i<=m;i++){
-	        for(int j=1;j<=n;j++){
-	            if(str1[i-1] == str2[j-1])
-	                dp[i][j] = 1+ dp[i-1][j-1];
-	            else
-	                dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
-	        }
-	    }
-	    return (m+n - 2*dp[m][n]);
+        int n=str1.size();
+	    int m=str2.size();
+        if(m==n && m==1 && str1!=str2) return 2;
+        vector<vector<int>>dp(n+1,vector<int>(m+1,-1));
+
+	    int res = lcs(str1,str2,n,m,dp);
+        cout<<res<<endl;
+	    return m+n-(2*res);
     }
 };
