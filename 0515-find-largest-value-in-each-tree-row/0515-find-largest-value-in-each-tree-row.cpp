@@ -22,13 +22,12 @@ public:
             while(n -- > 0){
                 TreeNode *temp = q.front();
                 q.pop();
-                if(temp!=NULL && temp->val >= largest){
+                if(temp->val > largest){
                     largest = temp->val;
                 }
-                if(temp->left!=NULL) q.push(temp->left);
-                if(temp->right!=NULL) q.push(temp->right);
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right);
             }
-            // if(largest != INT_MIN)
             ans.push_back(largest);
         }
         return ans;
